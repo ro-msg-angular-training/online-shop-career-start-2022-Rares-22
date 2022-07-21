@@ -1,0 +1,19 @@
+<body>
+    <form [formGroup]="profileForm">
+      <label for="username">Username: </label>
+      <input id="username" type="text" formControlName="username" />
+  
+      <label for="password">Password: </label>
+      <input id="password" type="text" formControlName="password" />
+  
+    </form>
+  
+    <br /><br />
+  
+  
+    <br /><br />
+    <button (click)="submit()">Log in</button>
+    <br /><br />
+  </body>
+  <router-outlet></router-outlet>
+  

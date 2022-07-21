@@ -20,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { NewProductComponent } from './new-product/new-product.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NewProductComponent } from './new-product/new-product.component';
     CartComponent,
     EditFormComponent,
     NewProductComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
