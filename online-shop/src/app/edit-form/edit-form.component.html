@@ -1,0 +1,29 @@
+<body>
+  <br />
+
+  <p>Complete the form to enable button.</p>
+  <form [formGroup]="profileForm">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" />
+
+    <label for="category">Category: </label>
+    <input id="category" type="text" formControlName="category" />
+
+    <label for="price">Price: </label>
+    <input id="price" type="text" formControlName="price" />
+
+    <label for="description">Description: </label>
+    <input id="description" type="text" formControlName="description" />
+  </form>
+
+  <br /><br />
+
+  <button type="submit" [disabled]="!profileForm.valid" (click)="save()">
+    Submit
+  </button>
+
+  <br /><br />
+  <button [routerLink]="['/products', product.id]">Cancel</button>
+  <br /><br />
+</body>
+<router-outlet></router-outlet>

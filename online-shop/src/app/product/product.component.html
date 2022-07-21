@@ -1,0 +1,11 @@
+<body>
+  <h1>Products</h1>
+
+  <button [routerLink]="['/new-product']">Add a new product</button>
+  <div *ngFor="let product of products">
+    <h3>{{ product.name }}</h3>
+    <button [routerLink]="['/products', product.id]">Details</button>
+    <br />
+  </div>
+</body>
+<router-outlet></router-outlet>
