@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './product/post';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class CartService {
 
   checkout() {
     return this.httpService.post(
-      `${'http://localhost:3000'}/orders`,
+      `${environment.url}/orders`,
       { customer: 'doej', products: this.shoppingCart },
       { responseType: 'text' }
     );

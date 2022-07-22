@@ -4,7 +4,7 @@
   <button [routerLink]="['/new-product']">Add a new product</button>
   <div *ngFor="let product of products">
     <h3>{{ product.name }}</h3>
-    <button [routerLink]="['/products', product.id]">Details</button>
+    <button [routerLink]="['/products', product.id]" (click)="onLeave()">Details</button>
     <br />
   </div>
 </body>

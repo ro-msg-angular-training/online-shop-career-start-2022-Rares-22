@@ -1,6 +1,8 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Post } from './post';
+import { ProductService } from '../product.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-product',
@@ -9,15 +11,18 @@ import { Post } from './post';
 })
 export class ProductComponent implements OnInit {
   products = new Array<Post>();
-
-  constructor(private http: HttpClient) {}
+  productSubscription: Subscription | undefined;
+  constructor( private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.http
-      .get('http://localhost:3000/products')
-      .subscribe((data) => this.displaydata(data));
+   this.getProducts();
   }
-  displaydata(data: any) {
-    this.products = data;
+
+  getProducts(){
+     this.productSubscription = this.productService.getProducts().subscribe((data) => this.products = data);
   }
+   onLeave()
+   {
+     this.productSubscription?.unsubscribe();
+   }
 }

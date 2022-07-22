@@ -13,17 +13,14 @@ export class CartComponent implements OnInit {
   cart = new Array<Post>();
 
   constructor(
-    private route: ActivatedRoute,
     private cartService: CartService,
-    private http: HttpClient
   ) {}
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
   }
 
   checkout(): void {
-    window.alert('Comanda efectuata!');
-
-    this.cartService.checkout().subscribe(() => {});
+    this.cartService.checkout().subscribe();
   }
 }
+

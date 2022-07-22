@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Post } from '../product/post';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-edit-form',
@@ -20,7 +21,7 @@ export class EditFormComponent implements OnInit {
     description: '',
   };
 
-  id = this.route.snapshot.paramMap.get('id');
+  id = parseInt(this.route.snapshot.paramMap.get('id') as string);
 
   profileForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -32,12 +33,14 @@ export class EditFormComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private productService: ProductService,
   ) {}
 
   ngOnInit(): void {
-    this.http
-      .get<Post>(`http://localhost:3000/products/${this.id}`)
+
+    this.productService
+      .getById(this.id)
       .subscribe((data) => {
         this.product = data;
         this.profileForm.patchValue(this.product);
@@ -45,12 +48,10 @@ export class EditFormComponent implements OnInit {
   }
 
   save() {
-    this.product.name = this.profileForm.value.name || '{}';
-    this.product.category = this.profileForm.value.category || '{}';
+    this.product.name = this.profileForm.value.name || '';
+    this.product.category = this.profileForm.value.category || '';
     this.product.price = this.profileForm.value.price || 0;
-    this.product.description = this.profileForm.value.description || '{}';
-    this.http
-      .put(`http://localhost:3000/products/${this.id}`, this.product)
-      .subscribe();
+    this.product.description = this.profileForm.value.description || '';
+    this.productService.updateProduct(this.product, this.id).subscribe();
   }
 }

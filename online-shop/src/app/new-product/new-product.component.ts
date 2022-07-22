@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import { Post } from '../product/post';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-edit-form',
@@ -29,21 +28,19 @@ export class NewProductComponent implements OnInit {
   });
 
   constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
   }
 
   save() {
-    this.product.name = this.profileForm.value.name || '{}';
-    this.product.category = this.profileForm.value.category || '{}';
+    this.product.name = this.profileForm.value.name || '';
+    this.product.category = this.profileForm.value.category || '';
     this.product.price = this.profileForm.value.price || 0;
-    this.product.description = this.profileForm.value.description || '{}';
-    this.http
-      .post(`http://localhost:3000/products/`, this.product)
-      .subscribe();
+    this.product.description = this.profileForm.value.description || '';
+    this.productService.save(this.product).subscribe();
   }
 }
+

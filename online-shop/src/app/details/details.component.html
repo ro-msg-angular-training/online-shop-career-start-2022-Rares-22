@@ -25,16 +25,16 @@
   </nav>
   <br /><br />
 
-  <button (click)="deleteProduct(product)" [routerLink]="['/products']">Delete</button>
+  <button (click)="deleteProduct(product)" [routerLink]="['/products']" [disabled]="!canEdit">Delete</button>
   <br /><br /><br />
 
-  <button [routerLink]="['/cart']">Shopping Cart</button>
+  <button [routerLink]="['/cart']" (click)="onLeave()">Shopping Cart</button>
   <br /><br /><br />
 
-  <button [routerLink]="['/edit-form', product?.id]">Edit</button>
+  <button [routerLink]="['/edit-form', product?.id]" [disabled]="!canEdit" (click)="onLeave()">Edit</button>
   <br /><br /><br />
 
-  <button [routerLink]="['/products']">Products</button>
+  <button [routerLink]="['/products']" (click)="onLeave()">Products</button>
   <br /><br /><br />
 </body>
 <router-outlet></router-outlet>
