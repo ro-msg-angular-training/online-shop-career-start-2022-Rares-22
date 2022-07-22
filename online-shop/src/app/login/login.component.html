@@ -1,0 +1,22 @@
+
+<h1>Log In</h1>
+
+<body>
+    <form [formGroup]="profileForm">
+      <label for="username">Username: </label>
+      <input id="username" type="text" formControlName="username" />
+      <br><br>
+      <label for="password">Password: </label>
+      <input id="password" type="password" formControlName="password" />
+  
+    </form>
+  
+    <br /><br />
+  
+  
+
+    <button (click)="logIn()">Log in</button>
+    <br /><br />
+  </body>
+  <router-outlet></router-outlet>
+  

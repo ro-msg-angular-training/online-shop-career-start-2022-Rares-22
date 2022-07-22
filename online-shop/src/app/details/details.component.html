@@ -1,0 +1,40 @@
+<body>
+  <div *ngIf="product">
+    <h1>{{ product.name }}</h1>
+    <br />
+    <h3>Category: {{ product.category }}</h3>
+    <br />
+    <h3>Description:</h3>
+    <h3>{{ product.description }}</h3>
+    <br />
+    <h2>Price:</h2>
+    <h2>{{ product.price }}</h2>
+  </div>
+
+  <br />
+
+  <nav>
+    <button
+      (click)="addToCart(product)"
+      [routerLink]="'/cart'"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      Add to cart
+    </button>
+  </nav>
+  <br /><br />
+
+  <button (click)="deleteProduct(product)" [routerLink]="['/products']" [disabled]="!canEdit">Delete</button>
+  <br /><br /><br />
+
+  <button [routerLink]="['/cart']" (click)="onLeave()">Shopping Cart</button>
+  <br /><br /><br />
+
+  <button [routerLink]="['/edit-form', product?.id]" [disabled]="!canEdit" (click)="onLeave()">Edit</button>
+  <br /><br /><br />
+
+  <button [routerLink]="['/products']" (click)="onLeave()">Products</button>
+  <br /><br /><br />
+</body>
+<router-outlet></router-outlet>

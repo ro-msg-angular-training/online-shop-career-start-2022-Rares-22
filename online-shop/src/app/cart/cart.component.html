@@ -1,0 +1,13 @@
+<h1>Shopping cart</h1>
+
+<div *ngFor="let shoppingCart of cart">
+  <h3>{{ shoppingCart.name }}</h3>
+
+  <br />
+</div>
+
+<button [routerLink]="['/products']">Products</button>
+
+<button (click)="checkout()">Check out</button>
+
+<router-outlet></router-outlet>
