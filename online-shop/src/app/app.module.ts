@@ -21,6 +21,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { LoginComponent } from './login/login.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { productReducer } from './state/products/product.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './state/products/product.effects';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,9 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule,
     MatCheckboxModule,
     MatChipsModule,
+    StoreDevtoolsModule.instrument(),
+    StoreModule.forRoot({ products: productReducer }),
+    EffectsModule.forRoot([ProductEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

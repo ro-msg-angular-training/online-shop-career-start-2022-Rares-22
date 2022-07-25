@@ -12,9 +12,7 @@ import { CartService } from '../cart.service';
 export class CartComponent implements OnInit {
   cart = new Array<Post>();
 
-  constructor(
-    private cartService: CartService,
-  ) {}
+  constructor(private cartService: CartService) {}
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
   }
@@ -23,4 +21,3 @@ export class CartComponent implements OnInit {
     this.cartService.checkout().subscribe();
   }
 }
-

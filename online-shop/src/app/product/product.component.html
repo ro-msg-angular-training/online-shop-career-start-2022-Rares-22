@@ -2,9 +2,11 @@
   <h1>Products</h1>
 
   <button [routerLink]="['/new-product']">Add a new product</button>
-  <div *ngFor="let product of products">
+  <div *ngFor="let product of products$ | async">
     <h3>{{ product.name }}</h3>
-    <button [routerLink]="['/products', product.id]" (click)="onLeave()">Details</button>
+    <button [routerLink]="['/products', product.id]" (click)="onLeave()">
+      Details
+    </button>
     <br />
   </div>
 </body>
