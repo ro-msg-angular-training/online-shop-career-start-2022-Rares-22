@@ -18,7 +18,12 @@
 
   <br /><br />
 
-  <button type="submit" [disabled]="!profileForm.valid" (click)="save()" [routerLink]="['/products', product.id]">
+  <button
+    type="submit"
+    [disabled]="!profileForm.valid"
+    (click)="save()"
+    [routerLink]="['/products', product.id]"
+  >
     Submit
   </button>
 
