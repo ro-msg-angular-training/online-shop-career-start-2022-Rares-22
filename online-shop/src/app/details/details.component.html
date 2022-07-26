@@ -20,7 +20,7 @@
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
     >
-      Add to cart
+    <mat-icon>add_shopping_cart</mat-icon>
     </button>
   </nav>
   <br /><br />
@@ -29,12 +29,14 @@
     (click)="deleteProduct(product)"
     [routerLink]="['/products']"
     [disabled]="!canEdit"
+    
   >
-    Delete
+  <mat-icon>delete</mat-icon>
   </button>
   <br /><br /><br />
 
-  <button [routerLink]="['/cart']" (click)="onLeave()">Shopping Cart</button>
+  <button [routerLink]="['/cart']" (click)="onLeave()">Shopping Cart
+  </button>
   <br /><br /><br />
 
   <button
@@ -42,7 +44,7 @@
     [disabled]="!canEdit"
     (click)="onLeave()"
   >
-    Edit
+  <mat-icon>edit</mat-icon>
   </button>
   <br /><br /><br />
 

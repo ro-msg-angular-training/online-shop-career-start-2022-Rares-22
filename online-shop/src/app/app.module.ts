@@ -26,6 +26,9 @@ import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/products/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './state/products/product.effects';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatIconModule} from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table'  ;
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { ProductEffects } from './state/products/product.effects';
     StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({ products: productReducer }),
     EffectsModule.forRoot([ProductEffects]),
-  ],
+    MatSliderModule,
+    MatIconModule,
+    MatTableModule,
+      ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,13 +1,29 @@
 <body>
   <h1>Products</h1>
 
-  <button [routerLink]="['/new-product']">Add a new product</button>
-  <div *ngFor="let product of products$ | async">
-    <h3>{{ product.name }}</h3>
-    <button [routerLink]="['/products', product.id]" (click)="onLeave()">
-      Details
-    </button>
-    <br />
-  </div>
+  <button [routerLink]="['/new-product']">
+    <mat-icon>add</mat-icon>
+    Add a new product</button>
+    <br><br>
+
+  <table mat-table [dataSource]="products$" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element">     
+        <button mat-button [routerLink]="['/products', element.id]" (click)="onLeave()">
+        Details
+      </button> </td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
 </body>
 <router-outlet></router-outlet>

@@ -55,6 +55,21 @@ export class LoginComponent implements OnInit {
       const password = this.profileForm.value.password || '';
 
       this.store.dispatch(login({ username: username, password: password }));
+
+    //   this.authService.login(username,password).subscribe(
+
+    //     {
+  
+    //       next: () => {
+    //         const redirectUrl = this.authService.redirectUrl || '/products';
+    //         this.router.navigateByUrl(redirectUrl);
+  
+    //       },
+  
+    //       error: () => {},
+  
+    //     }
+    // );
       
     }
   }

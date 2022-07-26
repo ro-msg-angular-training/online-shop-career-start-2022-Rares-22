@@ -20,8 +20,10 @@ export const productReducer = createReducer(
     ...state,
     status: 'loading',
   })),
-  on(loginSuccess, (state) => ({
+  on(loginSuccess, (state, { username, password }) => ({
     ...state,
+    username : username,
+    password : password,
     status: 'ready',
   })),
   on(loginFail, (state, { message }) => ({

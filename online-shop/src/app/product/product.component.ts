@@ -13,6 +13,7 @@ import * as ProductSelectors from '../state/products/product.selectors';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'description'];
   products$ = this.store.select(ProductSelectors.selectProducts);
 
   productSubscription: Subscription | undefined;
